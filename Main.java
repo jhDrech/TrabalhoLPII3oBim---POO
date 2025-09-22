@@ -14,6 +14,8 @@ public class Main {
         cardapio.adicionarBebida(refrigerante);
         cardapio.adicionarPizza(mussarela);
         cardapio.adicionarPizza(calabresa);
+        Garcom garcom = new Garcom(0);
+
         while(true){
             System.out.println("1. fazer pedido");
             System.out.println("2. cardápio de pizzas");
@@ -34,33 +36,32 @@ public class Main {
         limparTela();
         float conta = 0;
         float percentualGarcom = 0;
-        int i = 0;
+        ArrayList pedidosDePizzas = new ArrayList<String>();
+        ArrayList pedidosDeBebidas = new ArrayList<String>();
 
-        ArrayList<Pizza> pizzas = Cardapio.getCardapioPizzas();
         while(true){
-            System.out.println("insira o numero da pizza (0 para finalizar):");
-            int idPizza = sc.nextInt();
-            if(idPizza == 0){
-                break;
+            System.out.println("insira o nome da pizza");
+            String pedido = sc.nextInt();
+            pedidosDePizzas.add(pedido);
+            for (String pizzaPedida : pedidosDePizzas) {
+                Pizza pizzaFeita  = obterPizzaPornome(pizzaPedida, cardapio); 
+                conta += pizzaFeita.getPreco();           
             }
-            System.out.println("insira o numero da bebida(0 para finalizar):");
-            int idBebida = sc.nextInt();
-            if(idBebida == 0){
-                break;
+
+            System.out.println("insira o nome da bebida");
+            pedido = sc.nextInt();
+            pedidosDeBebidas.add(pedido);
+            for (String bebidaPedida : pedidosDeBebidas) {
+                Bebida bebidaRecebida  = obterBebidaPornome(bebidaPedida, cardapio); 
+                conta += bebidaRecebida.getPreco();           
             }
-            for (Pizza pizza : ) {
-                if(idPizza == i){
-                    conta += pizza.getPreco();
-                }
-                i++;
-            }
-            i = 0;
-            for (Bebida bebida : lista) {
-                if(idBebida == i){
-                    conta+= bebida.getPreco();
-                } 
-                i++;
-            }
+            garcom.percentualGarcom += conta * (10/100);
+
+            System.out.println("-------TOTAL-------");
+            for (String pizzaPedida : pedidosDePizzas) {
+                System.out.println("PIZZAS: %s - %fR$\n", pizzaPedida, p);
+                
+            } 
         }
     }
     public static void mostrarCardapioPizzas(){

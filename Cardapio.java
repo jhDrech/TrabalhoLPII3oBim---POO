@@ -31,6 +31,16 @@ public class Cardapio {
         System.out.println("-------------------");
     }
 
+    public Pizza obterPizzaPorNome(String nome, cardapioPizzas cardapio){
+        for (Pizza pedido : cardapioPizzas) {
+            if (pedido.getNome().equals(nome)) return pedido;
+        }
+    }
+    public Bebida obterBebidaPorNome(String nome, cardapioBebidas cardapio){
+        for (Bebida pedido : cardapioBebidas) {
+            if (pedido.getNome().equals(nome)) return pedido;
+        }
+    }
     public ArrayList<Pizza> getCardapioPizzas() {
         return cardapioPizzas;
     }
